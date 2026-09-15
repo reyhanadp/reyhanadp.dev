@@ -1,0 +1,59 @@
+---
+import { profile } from "../data/profile";
+
+const secondaryLinks = [
+  { label: profile.phone, href: `tel:${profile.phone.replace(/[^0-9+]/g, "")}` },
+  { label: "LinkedIn", href: profile.links.linkedin, external: true },
+  { label: "GitHub", href: profile.links.github, external: true },
+].filter((link) => link.href);
+---
+
+<section id="contact" class="bg-slate-50 py-20 sm:py-24 dark:bg-slate-900/40">
+  <div class="mx-auto max-w-5xl px-6">
+    <div
+      class="relative isolate overflow-hidden rounded-3xl border border-slate-200 bg-white px-6 py-14 text-center shadow-sm sm:px-12 dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none"
+    >
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+        <div
+          class="absolute left-1/2 top-0 h-64 w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-200/50 blur-3xl dark:bg-indigo-500/15"
+        >
+        </div>
+      </div>
+
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400">
+        Kontak
+      </p>
+      <h2 class="mt-2 text-3xl font-bold tracking-tight text-balance text-slate-900 sm:text-4xl dark:text-white">
+        Mari berkolaborasi
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl leading-relaxed text-pretty">
+        Tertarik bekerja sama atau punya pertanyaan? Kirim email — saya akan membalas secepatnya.
+      </p>
+
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a
+          href={`mailto:${profile.email}`}
+          class="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 active:scale-[0.98]"
+        >
+          <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <path d="m3 7 9 6 9-6" />
+          </svg>
+          {profile.email}
+        </a>
+        {
+          secondaryLinks.map((link) => (
+            <a
+              href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
+              class="inline-flex items-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition hover:border-slate-400 hover:bg-slate-50 active:scale-[0.98] dark:border-white/15 dark:bg-transparent dark:text-white dark:hover:border-white/30 dark:hover:bg-white/5"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

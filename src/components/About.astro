@@ -1,0 +1,35 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import { about, skillGroups } from "../data/profile";
+---
+
+<section id="about" class="bg-slate-50 py-20 sm:py-24 dark:bg-slate-900/40">
+  <div class="mx-auto max-w-5xl px-6">
+    <SectionHeading eyebrow="Tentang" title="Siapa saya" />
+
+    <div class="grid gap-12 lg:grid-cols-5">
+      <div class="space-y-5 text-base leading-relaxed text-pretty lg:col-span-3">
+        {about.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+
+      <div class="space-y-6 lg:col-span-2">
+        {
+          skillGroups.map((group) => (
+            <div>
+              <h3 class="text-xs font-semibold tracking-wide text-slate-500 uppercase dark:text-slate-400">
+                {group.label}
+              </h3>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                {group.items.map((skill) => (
+                  <li class="rounded-full border border-slate-200 bg-white px-3 py-1 text-sm font-medium text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200">
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

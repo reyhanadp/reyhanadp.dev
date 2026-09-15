@@ -1,0 +1,33 @@
+---
+---
+
+<button
+  id="install-btn"
+  hidden
+  class="fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-600/30 transition hover:bg-indigo-700 active:scale-95"
+>
+  Install App
+</button>
+
+<script>
+  let deferredPrompt: any = null;
+  const btn = document.getElementById("install-btn") as HTMLButtonElement | null;
+
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    deferredPrompt = event;
+    btn?.removeAttribute("hidden");
+  });
+
+  btn?.addEventListener("click", async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    btn.setAttribute("hidden", "");
+  });
+
+  window.addEventListener("appinstalled", () => {
+    btn?.setAttribute("hidden", "");
+  });
+</script>
