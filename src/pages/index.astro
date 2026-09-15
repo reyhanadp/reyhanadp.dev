@@ -1,27 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import InstallPrompt from "../components/InstallPrompt.astro";
-import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
-import Experience from "../components/Experience.astro";
-import Projects from "../components/Projects.astro";
-import Education from "../components/Education.astro";
-import Contact from "../components/Contact.astro";
-import Footer from "../components/Footer.astro";
-import { profile } from "../data/profile";
+import HomePage from "../components/HomePage.astro";
 ---
 
-<Layout title={`${profile.name} — Portofolio`} description={profile.tagline}>
-  <InstallPrompt />
-  <Header />
-  <main>
-    <Hero />
-    <About />
-    <Experience />
-    <Projects />
-    <Education />
-    <Contact />
-  </main>
-  <Footer />
-</Layout>
+<HomePage />

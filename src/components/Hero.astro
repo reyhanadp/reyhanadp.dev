@@ -1,12 +1,16 @@
 ---
-import { profile, projects, certifications } from "../data/profile";
+import { getContent, toLang } from "../data";
+
+const { profile, jobTitle, tagline, availability, projects, certifications, ui } = getContent(
+  toLang(Astro.currentLocale),
+);
 
 const years = new Date().getFullYear() - profile.careerStart;
 
 const stats = [
-  { value: `${years}+`, label: "Tahun pengalaman" },
-  { value: String(projects.length), label: "Proyek enterprise" },
-  { value: String(certifications.length), label: "Sertifikasi" },
+  { value: `${years}+`, label: ui.hero.yearsExperience },
+  { value: String(projects.length), label: ui.hero.enterpriseProjects },
+  { value: String(certifications.length), label: ui.hero.certifications },
 ];
 ---
 
@@ -30,10 +34,10 @@ const stats = [
         {profile.location}
       </span>
       {
-        profile.availability && (
+        availability && (
           <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-300">
             <span class="size-1.5 rounded-full bg-emerald-500" />
-            {profile.availability}
+            {availability}
           </span>
         )
       }
@@ -45,10 +49,10 @@ const stats = [
       {profile.name}
     </h1>
     <p class="mt-3 text-lg font-semibold text-indigo-600 sm:text-xl dark:text-indigo-400">
-      {profile.title}
+      {jobTitle}
     </p>
     <p class="mt-5 max-w-2xl text-lg leading-relaxed text-pretty">
-      {profile.tagline}
+      {tagline}
     </p>
 
     <div class="mt-8 flex flex-wrap gap-3">
@@ -56,7 +60,7 @@ const stats = [
         href="#projects"
         class="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 active:scale-[0.98]"
       >
-        Lihat Proyek
+        {ui.hero.viewProjects}
         <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M5 12h14M13 6l6 6-6 6" />
         </svg>
@@ -65,7 +69,7 @@ const stats = [
         href="#contact"
         class="inline-flex items-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition hover:border-slate-400 hover:bg-slate-50 active:scale-[0.98] dark:border-white/15 dark:bg-transparent dark:text-white dark:hover:border-white/30 dark:hover:bg-white/5"
       >
-        Hubungi Saya
+        {ui.hero.contactMe}
       </a>
     </div>
 

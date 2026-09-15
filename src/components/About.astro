@@ -1,11 +1,13 @@
 ---
 import SectionHeading from "./SectionHeading.astro";
-import { about, skillGroups } from "../data/profile";
+import { getContent, toLang } from "../data";
+
+const { about, skillGroups, ui } = getContent(toLang(Astro.currentLocale));
 ---
 
 <section id="about" class="bg-slate-50 py-20 sm:py-24 dark:bg-slate-900/40">
   <div class="mx-auto max-w-5xl px-6">
-    <SectionHeading eyebrow="Tentang" title="Siapa saya" />
+    <SectionHeading eyebrow={ui.about.eyebrow} title={ui.about.title} />
 
     <div class="grid gap-12 lg:grid-cols-5">
       <div class="space-y-5 text-base leading-relaxed text-pretty lg:col-span-3">

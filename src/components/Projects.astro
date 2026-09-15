@@ -1,15 +1,17 @@
 ---
 import SectionHeading from "./SectionHeading.astro";
 import ProjectCard from "./ProjectCard.astro";
-import { projects } from "../data/profile";
+import { getContent, toLang } from "../data";
+
+const { projects, ui } = getContent(toLang(Astro.currentLocale));
 ---
 
 <section id="projects" class="bg-slate-50 py-20 sm:py-24 dark:bg-slate-900/40">
   <div class="mx-auto max-w-5xl px-6">
     <SectionHeading
-      eyebrow="Proyek"
-      title="Yang pernah saya kerjakan"
-      description="Klik salah satu proyek untuk melihat detailnya. Sebagian besar adalah pekerjaan klien enterprise sehingga source code tidak dipublikasikan."
+      eyebrow={ui.projects.eyebrow}
+      title={ui.projects.title}
+      description={ui.projects.description}
     />
 
     <div class="grid gap-5 sm:grid-cols-2">

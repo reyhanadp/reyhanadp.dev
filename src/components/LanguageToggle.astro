@@ -1,0 +1,51 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { LANGS, toLang, getContent } from "../data";
+
+const lang = toLang(Astro.currentLocale);
+const { ui } = getContent(lang);
+
+// Path halaman saat ini tanpa prefix bahasa, supaya bisa dipetakan ke bahasa lain
+const basePath = Astro.url.pathname.replace(/^\/id(?=\/|$)/, "") || "/";
+
+const options = LANGS.map((l) => ({
+  ...l,
+  href: getRelativeLocaleUrl(l.code, basePath),
+  active: l.code === lang,
+}));
+---
+
+<div
+  role="group"
+  aria-label={ui.a11y.switchLanguage}
+  class="flex h-9 items-center rounded-full border border-slate-200 p-0.5 text-xs font-semibold dark:border-white/10"
+>
+  {
+    options.map((opt) => (
+      <a
+        href={opt.href}
+        hreflang={opt.code}
+        data-lang={opt.code}
+        aria-current={opt.active ? "page" : undefined}
+        class:list={[
+          "grid h-full min-w-8 place-items-center rounded-full px-2 transition",
+          opt.active
+            ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900"
+            : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white",
+        ]}
+      >
+        {opt.label}
+      </a>
+    ))
+  }
+</div>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>("[data-lang]").forEach((link) => {
+    link.addEventListener("click", () => {
+      try {
+        localStorage.setItem("lang", link.dataset.lang ?? "en");
+      } catch {}
+    });
+  });
+</script>

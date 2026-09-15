@@ -1,18 +1,19 @@
 ---
 import "../styles/global.css";
+import { getAbsoluteLocaleUrl } from "astro:i18n";
+import { LANGS, toLang } from "../data";
 
 interface Props {
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
 }
 
-const {
-  title = "Reyhan Audian Dwi Putra — Portofolio",
-  description = "Portofolio Reyhan Audian Dwi Putra — Mobile Developer & Data Engineer.",
-} = Astro.props;
+const { title, description } = Astro.props;
+const lang = toLang(Astro.currentLocale);
+const basePath = Astro.url.pathname.replace(/^\/id(?=\/|$)/, "") || "/";
 ---
 
-<html lang="id">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,6 +22,8 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === "id" ? "id_ID" : "en_US"} />
+    {LANGS.map((l) => <link rel="alternate" hreflang={l.code} href={getAbsoluteLocaleUrl(l.code, basePath)} />)}
 
     <title>{title}</title>
 
@@ -41,16 +44,23 @@ const {
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Portofolio" />
+    <meta name="apple-mobile-web-app-title" content="Portfolio" />
 
-    <!-- Terapkan tema sebelum render supaya tidak ada flash warna saat load -->
+    <!-- Terapkan tema & bahasa pilihan sebelum render supaya tidak ada flash -->
     <script is:inline>
       try {
         if (localStorage.getItem("theme") === "dark") {
           document.documentElement.classList.add("dark");
-          document
-            .querySelector('meta[name="theme-color"]')
-            ?.setAttribute("content", "#020617");
+          document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#020617");
+        }
+
+        var pref = localStorage.getItem("lang");
+        var path = location.pathname;
+        var onId = path === "/id" || /^\/id\//.test(path);
+        if (pref === "id" && !onId) {
+          location.replace("/id" + (path === "/" ? "/" : path) + location.search + location.hash);
+        } else if (pref === "en" && onId) {
+          location.replace((path.replace(/^\/id/, "") || "/") + location.search + location.hash);
         }
       } catch {}
     </script>

@@ -1,13 +1,19 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
 import ThemeToggle from "./ThemeToggle.astro";
-import { profile } from "../data/profile";
+import LanguageToggle from "./LanguageToggle.astro";
+import { getContent, toLang } from "../data";
+
+const lang = toLang(Astro.currentLocale);
+const { profile, ui } = getContent(lang);
+const home = getRelativeLocaleUrl(lang, "/");
 
 const navLinks = [
-  { href: "/#about", label: "Tentang" },
-  { href: "/#experience", label: "Pengalaman" },
-  { href: "/#projects", label: "Proyek" },
-  { href: "/#education", label: "Pendidikan" },
-  { href: "/#contact", label: "Kontak" },
+  { href: `${home}#about`, label: ui.nav.about },
+  { href: `${home}#experience`, label: ui.nav.experience },
+  { href: `${home}#projects`, label: ui.nav.projects },
+  { href: `${home}#education`, label: ui.nav.education },
+  { href: `${home}#contact`, label: ui.nav.contact },
 ];
 
 const initial = profile.name.charAt(0);
@@ -16,8 +22,8 @@ const initial = profile.name.charAt(0);
 <header
   class="sticky top-0 z-40 border-b border-slate-200/70 bg-white/80 backdrop-blur-md dark:border-white/10 dark:bg-slate-950/80"
 >
-  <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
-    <a href="/" class="flex items-center gap-2.5 text-sm font-semibold text-slate-900 dark:text-white">
+  <nav class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-3">
+    <a href={home} class="flex items-center gap-2.5 text-sm font-semibold text-slate-900 dark:text-white">
       <span class="grid size-8 place-items-center rounded-lg bg-indigo-600 text-sm font-bold text-white">
         {initial}
       </span>
@@ -38,11 +44,12 @@ const initial = profile.name.charAt(0);
     </ul>
 
     <div class="flex items-center gap-2">
+      <LanguageToggle />
       <ThemeToggle />
       <button
         id="menu-toggle"
         type="button"
-        aria-label="Buka menu"
+        aria-label={ui.a11y.openMenu}
         aria-expanded="false"
         aria-controls="mobile-menu"
         class="grid size-9 place-items-center rounded-full border border-slate-200 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 md:hidden dark:border-white/10 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"

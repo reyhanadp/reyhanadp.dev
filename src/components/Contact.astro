@@ -1,5 +1,7 @@
 ---
-import { profile } from "../data/profile";
+import { getContent, toLang } from "../data";
+
+const { profile, ui } = getContent(toLang(Astro.currentLocale));
 
 const secondaryLinks = [
   { label: profile.phone, href: `tel:${profile.phone.replace(/[^0-9+]/g, "")}` },
@@ -21,13 +23,13 @@ const secondaryLinks = [
       </div>
 
       <p class="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400">
-        Kontak
+        {ui.contact.eyebrow}
       </p>
       <h2 class="mt-2 text-3xl font-bold tracking-tight text-balance text-slate-900 sm:text-4xl dark:text-white">
-        Mari berkolaborasi
+        {ui.contact.title}
       </h2>
       <p class="mx-auto mt-4 max-w-xl leading-relaxed text-pretty">
-        Tertarik bekerja sama atau punya pertanyaan? Kirim email — saya akan membalas secepatnya.
+        {ui.contact.description}
       </p>
 
       <div class="mt-8 flex flex-wrap justify-center gap-3">

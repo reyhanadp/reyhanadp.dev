@@ -1,11 +1,13 @@
 ---
 import SectionHeading from "./SectionHeading.astro";
-import { experience } from "../data/profile";
+import { getContent, toLang } from "../data";
+
+const { experience, ui } = getContent(toLang(Astro.currentLocale));
 ---
 
 <section id="experience" class="py-20 sm:py-24">
   <div class="mx-auto max-w-5xl px-6">
-    <SectionHeading eyebrow="Pengalaman" title="Perjalanan karier" />
+    <SectionHeading eyebrow={ui.experience.eyebrow} title={ui.experience.title} />
 
     <ol class="relative ml-2 border-l border-slate-200 dark:border-white/10">
       {

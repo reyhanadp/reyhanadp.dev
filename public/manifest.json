@@ -1,7 +1,7 @@
 {
-  "name": "Reyhan Audian Dwi Putra — Portofolio",
-  "short_name": "Portofolio",
-  "description": "Portofolio Reyhan Audian Dwi Putra — Mobile Developer & Data Engineer.",
+  "name": "Reyhan Audian Dwi Putra — Portfolio",
+  "short_name": "Portfolio",
+  "description": "Portfolio of Reyhan Audian Dwi Putra — Mobile Developer & Data Engineer.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -27,5 +27,6 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ]
+  ],
+  "lang": "en"
 }

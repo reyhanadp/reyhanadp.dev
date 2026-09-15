@@ -1,5 +1,7 @@
 ---
-import { profile } from "../data/profile";
+import { getContent, toLang } from "../data";
+
+const { profile, ui } = getContent(toLang(Astro.currentLocale));
 ---
 
 <footer class="border-t border-slate-200 dark:border-white/10">
@@ -7,6 +9,6 @@ import { profile } from "../data/profile";
     class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-slate-500 sm:flex-row dark:text-slate-400"
   >
     <p>© {new Date().getFullYear()} {profile.name}</p>
-    <p>Dibuat dengan Astro & Tailwind CSS</p>
+    <p>{ui.footer.builtWith}</p>
   </div>
 </footer>

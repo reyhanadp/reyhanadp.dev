@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import InstallPrompt from "./InstallPrompt.astro";
+import Header from "./Header.astro";
+import Hero from "./Hero.astro";
+import About from "./About.astro";
+import Experience from "./Experience.astro";
+import Projects from "./Projects.astro";
+import Education from "./Education.astro";
+import Contact from "./Contact.astro";
+import Footer from "./Footer.astro";
+import { getContent, toLang } from "../data";
+
+const { profile, jobTitle, tagline } = getContent(toLang(Astro.currentLocale));
+---
+
+<Layout title={`${profile.name} — ${jobTitle}`} description={tagline}>
+  <InstallPrompt />
+  <Header />
+  <main>
+    <Hero />
+    <About />
+    <Experience />
+    <Projects />
+    <Education />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>

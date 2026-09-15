@@ -1,6 +1,6 @@
 ---
-import ProjectPage from "../../components/ProjectPage.astro";
-import { projectAssets } from "../../data";
+import ProjectPage from "../../../components/ProjectPage.astro";
+import { projectAssets } from "../../../data";
 
 export function getStaticPaths() {
   return projectAssets.map((project) => ({ params: { slug: project.slug } }));
