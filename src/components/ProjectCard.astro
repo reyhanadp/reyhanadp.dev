@@ -1,5 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
+import ProjectIcon from "./ProjectIcon.astro";
 import { getContent, toLang, type Project } from "../data";
 
 interface Props {
@@ -51,14 +52,17 @@ const href = getRelativeLocaleUrl(lang, `/projects/${project.slug}`);
 
   <div class="flex min-w-0 flex-col">
     <div class="flex items-start justify-between gap-4">
-      <div class="min-w-0">
-        <h3 class="text-lg font-bold text-slate-900 group-hover:text-indigo-700 sm:text-xl dark:text-white dark:group-hover:text-indigo-300">
-          {project.title}
-        </h3>
-        <p class="mt-1 text-sm text-slate-500 md:hidden dark:text-slate-400">
-          {project.client} · {project.period}
-        </p>
-        <p class="mt-1 hidden text-sm font-medium text-slate-500 md:block dark:text-slate-400">{project.role}</p>
+      <div class="flex min-w-0 items-center gap-3.5">
+        <ProjectIcon project={project} />
+        <div class="min-w-0">
+          <h3 class="text-lg font-bold text-slate-900 group-hover:text-indigo-700 sm:text-xl dark:text-white dark:group-hover:text-indigo-300">
+            {project.title}
+          </h3>
+          <p class="mt-1 text-sm text-slate-500 md:hidden dark:text-slate-400">
+            {project.client} · {project.period}
+          </p>
+          <p class="mt-1 hidden text-sm font-medium text-slate-500 md:block dark:text-slate-400">{project.role}</p>
+        </div>
       </div>
       <span
         class="grid size-9 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-400 transition group-hover:border-indigo-300 group-hover:bg-indigo-50 group-hover:text-indigo-600 dark:border-white/10 dark:text-slate-500 dark:group-hover:border-indigo-400/40 dark:group-hover:bg-indigo-500/10 dark:group-hover:text-indigo-300"

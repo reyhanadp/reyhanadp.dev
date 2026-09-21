@@ -1,0 +1,56 @@
+---
+import type { Project } from "../data";
+
+interface Props {
+  project: Project;
+  size?: "sm" | "lg";
+}
+
+const { project, size = "sm" } = Astro.props;
+
+const dim = size === "lg" ? "size-16" : "size-12";
+const radius = size === "lg" ? "rounded-2xl" : "rounded-xl";
+const iconSize = size === "lg" ? "size-8" : "size-6";
+
+const category = project.category.toLowerCase();
+const isWeb = category.includes("web") && !category.includes("mobile");
+const isData = category.includes("data");
+---
+
+{
+  project.icon ? (
+    <img
+      src={project.icon}
+      alt=""
+      width={size === "lg" ? 64 : 48}
+      height={size === "lg" ? 64 : 48}
+      loading="lazy"
+      class:list={[dim, radius, "shrink-0 border border-slate-200/70 bg-white object-cover dark:border-white/10"]}
+    />
+  ) : (
+    <span
+      class:list={[
+        dim,
+        radius,
+        "grid shrink-0 place-items-center border border-slate-200/70 bg-slate-100 text-slate-400 dark:border-white/10 dark:bg-white/5 dark:text-slate-500",
+      ]}
+    >
+      {isData ? (
+        <svg class={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 3v18h18" />
+          <path d="M7 15l4-6 3 3 5-7" />
+        </svg>
+      ) : isWeb ? (
+        <svg class={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="16" rx="2" />
+          <path d="M3 9h18" />
+        </svg>
+      ) : (
+        <svg class={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="6" y="2" width="12" height="20" rx="2" />
+          <path d="M11 18h2" />
+        </svg>
+      )}
+    </span>
+  )
+}

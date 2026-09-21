@@ -34,6 +34,7 @@ export interface ProjectAssets {
   tags: string[];
   link: string; // kosongkan kalau tidak ada
   ongoing?: boolean; // true kalau proyek masih berjalan
+  icon?: string; // path ke app icon/logo, mis. "/projects/<slug>/icon.png". Kosongkan untuk pakai fallback generic.
   // Taruh gambar di public/projects/<slug>/ lalu daftarkan di sini
   screenshots: { src: string; alt: string }[];
 }

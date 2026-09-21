@@ -21,12 +21,14 @@ export const projectAssets: ProjectAssets[] = [
     slug: "masogi",
     tags: ["React Native", "Next.js", "TypeScript"],
     link: "", // contoh: link Play Store / App Store
+    icon: "/projects/masogi/icon.png",
     screenshots: [],
   },
   {
     slug: "digipos-outlet",
     tags: ["Android Native", "Java", "Kotlin", "MVVM"],
     link: "",
+    icon: "/projects/digipos-outlet/icon.png",
     screenshots: [],
   },
   {
@@ -34,36 +36,42 @@ export const projectAssets: ProjectAssets[] = [
     ongoing: true,
     tags: ["Android Native", "Kotlin"],
     link: "",
+    icon: "/projects/mytelkomsel/icon.png",
     screenshots: [],
   },
   {
     slug: "digipos-dashboard",
     tags: ["React", "TypeScript"],
     link: "",
+    icon: "/projects/digipos-dashboard/icon.png",
     screenshots: [],
   },
   {
     slug: "swarapoint",
     tags: ["React Native", "TypeScript"],
     link: "",
+    icon: "/projects/swarapoint/icon.png",
     screenshots: [],
   },
   {
     slug: "digipos-lite",
     tags: ["Android Native", "Java", "Kotlin"],
     link: "",
+    icon: "/projects/digipos-lite/icon.png",
     screenshots: [],
   },
   {
     slug: "comm-apps-rekat",
     tags: ["React Native", "TypeScript"],
     link: "",
+    icon: "/projects/comm-apps-rekat/icon.png",
     screenshots: [],
   },
   {
     slug: "cb-umma",
     tags: ["React Native", "TypeScript"],
     link: "",
+    icon: "/projects/cb-umma/icon.png",
     screenshots: [],
   },
   {
