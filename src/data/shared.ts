@@ -5,8 +5,8 @@ import type { ProjectAssets } from "./types";
 
 export const profile = {
   name: "Reyhan Audian Dwi Putra",
-  email: "reyhanadp@gmail.com",
-  phone: "0857-3795-3188",
+  email: "reyhanadp.work@gmail.com",
+  phone: "0851-6364-6515",
   location: "Bandung, Indonesia",
   careerStart: 2019,
   links: {

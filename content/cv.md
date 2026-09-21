@@ -1,7 +1,7 @@
 # Reyhan Audian Dwi Putra
 **Software Engineer — Frontend & Data Engineering**
 
-📍 Bandung, Indonesia · 📧 reyhanadp@gmail.com · 📱 0857-3795-3188
+📍 Bandung, Indonesia · 📧 reyhanadp.work@gmail.com · 📱 0851-6364-6515
 🔗 LinkedIn: [tambahkan link] · Portfolio: [tambahkan link]
 
 ## Ringkasan
