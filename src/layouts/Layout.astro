@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { getAbsoluteLocaleUrl } from "astro:i18n";
+import BackToTop from "../components/BackToTop.astro";
 import { LANGS, toLang } from "../data";
 
 interface Props {
@@ -48,6 +49,7 @@ const basePath = Astro.url.pathname.replace(/^\/id(?=\/|$)/, "") || "/";
 
     <!-- Terapkan tema & bahasa pilihan sebelum render supaya tidak ada flash -->
     <script is:inline>
+      document.documentElement.classList.add("js");
       try {
         if (localStorage.getItem("theme") === "dark") {
           document.documentElement.classList.add("dark");
@@ -67,8 +69,27 @@ const basePath = Astro.url.pathname.replace(/^\/id(?=\/|$)/, "") || "/";
   </head>
   <body class="min-h-dvh bg-white text-slate-600 antialiased dark:bg-slate-950 dark:text-slate-400">
     <slot />
+    <BackToTop />
 
     <script>
+      const revealed = document.querySelectorAll("[data-reveal]");
+      if (revealed.length > 0 && "IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: "0px 0px -10% 0px" },
+        );
+        revealed.forEach((el) => observer.observe(el));
+      } else {
+        revealed.forEach((el) => el.classList.add("is-visible"));
+      }
+
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
           navigator.serviceWorker.register("/sw.js").catch((err) => {

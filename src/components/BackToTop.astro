@@ -1,0 +1,29 @@
+---
+import { getContent, toLang } from "../data";
+
+const { ui } = getContent(toLang(Astro.currentLocale));
+---
+
+<button
+  id="back-to-top"
+  type="button"
+  aria-label={ui.a11y.backToTop}
+  class="fixed right-5 bottom-5 z-40 grid size-11 translate-y-4 place-items-center rounded-full border border-slate-200 bg-white/90 text-slate-600 opacity-0 shadow-lg backdrop-blur transition hover:border-indigo-300 hover:text-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 data-[visible]:translate-y-0 data-[visible]:opacity-100 dark:border-white/10 dark:bg-slate-900/90 dark:text-slate-300 dark:shadow-none dark:hover:border-indigo-400/40 dark:hover:text-indigo-300"
+>
+  <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7" />
+  </svg>
+</button>
+
+<script>
+  const btn = document.getElementById("back-to-top");
+  if (btn) {
+    const update = () => {
+      if (window.scrollY > 600) btn.setAttribute("data-visible", "");
+      else btn.removeAttribute("data-visible");
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  }
+</script>

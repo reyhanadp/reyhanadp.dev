@@ -13,11 +13,14 @@ export interface ExperienceItem {
   highlights: string[];
 }
 
+export type ProjectGroup = "software" | "data";
+
 export interface ProjectText {
   slug: string; // harus cocok dengan slug di shared.ts
   title: string;
   client: string;
   category: string;
+  group: ProjectGroup; // subgrup di section Projects
   role: string;
   period: string;
   description: string; // ringkasan singkat untuk kartu
@@ -30,6 +33,7 @@ export interface ProjectAssets {
   slug: string;
   tags: string[];
   link: string; // kosongkan kalau tidak ada
+  ongoing?: boolean; // true kalau proyek masih berjalan
   // Taruh gambar di public/projects/<slug>/ lalu daftarkan di sini
   screenshots: { src: string; alt: string }[];
 }
@@ -65,7 +69,14 @@ export interface UIStrings {
   };
   about: { eyebrow: string; title: string };
   experience: { eyebrow: string; title: string };
-  projects: { eyebrow: string; title: string; description: string };
+  projects: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    groups: { software: string; data: string };
+    countLabel: string; // mis. "projects" -> "9 projects"
+    ongoing: string; // badge untuk proyek yang masih berjalan
+  };
   education: {
     eyebrow: string;
     title: string;
@@ -92,6 +103,7 @@ export interface UIStrings {
     toggleTheme: string;
     openMenu: string;
     switchLanguage: string;
+    backToTop: string;
   };
 }
 

@@ -9,11 +9,11 @@ const { profile, ui } = getContent(lang);
 const home = getRelativeLocaleUrl(lang, "/");
 
 const navLinks = [
-  { href: `${home}#about`, label: ui.nav.about },
-  { href: `${home}#experience`, label: ui.nav.experience },
-  { href: `${home}#projects`, label: ui.nav.projects },
-  { href: `${home}#education`, label: ui.nav.education },
-  { href: `${home}#contact`, label: ui.nav.contact },
+  { id: "about", href: `${home}#about`, label: ui.nav.about },
+  { id: "experience", href: `${home}#experience`, label: ui.nav.experience },
+  { id: "projects", href: `${home}#projects`, label: ui.nav.projects },
+  { id: "education", href: `${home}#education`, label: ui.nav.education },
+  { id: "contact", href: `${home}#contact`, label: ui.nav.contact },
 ];
 
 const initial = profile.name.charAt(0);
@@ -35,7 +35,8 @@ const initial = profile.name.charAt(0);
         <li>
           <a
             href={link.href}
-            class="rounded-full px-3.5 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
+            data-nav={link.id}
+            class="rounded-full px-3.5 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 aria-[current=true]:bg-indigo-50 aria-[current=true]:text-indigo-700 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white dark:aria-[current=true]:bg-indigo-500/15 dark:aria-[current=true]:text-indigo-300"
           >
             {link.label}
           </a>
@@ -67,7 +68,8 @@ const initial = profile.name.charAt(0);
         <li>
           <a
             href={link.href}
-            class="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/10"
+            data-nav={link.id}
+            class="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 aria-[current=true]:bg-indigo-50 aria-[current=true]:text-indigo-700 dark:text-slate-200 dark:hover:bg-white/10 dark:aria-[current=true]:bg-indigo-500/15 dark:aria-[current=true]:text-indigo-300"
           >
             {link.label}
           </a>
@@ -93,4 +95,32 @@ const initial = profile.name.charAt(0);
       toggle?.setAttribute("aria-expanded", "false");
     });
   });
+
+  // Scroll-spy: tandai link nav sesuai section yang sedang terlihat
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>("[data-nav]");
+  const sections = Array.from(navLinks)
+    .map((link) => document.getElementById(link.dataset.nav ?? ""))
+    .filter((el): el is HTMLElement => el !== null);
+
+  if (sections.length > 0) {
+    const setActive = (id: string | null) => {
+      navLinks.forEach((link) => {
+        if (link.dataset.nav === id) link.setAttribute("aria-current", "true");
+        else link.removeAttribute("aria-current");
+      });
+    };
+
+    const update = () => {
+      const marker = window.innerHeight * 0.35;
+      let current: string | null = null;
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= marker) current = section.id;
+      }
+      setActive(current);
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+  }
 </script>

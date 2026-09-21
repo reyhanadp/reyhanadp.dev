@@ -18,14 +18,51 @@ export const profile = {
 // Setiap slug di sini harus punya pasangan teks di en.ts dan id.ts.
 export const projectAssets: ProjectAssets[] = [
   {
-    slug: "99-usahaku",
-    tags: ["React Native", "Android", "iOS"],
+    slug: "masogi",
+    tags: ["React Native", "Next.js", "TypeScript"],
     link: "", // contoh: link Play Store / App Store
     screenshots: [],
   },
   {
-    slug: "digipos",
-    tags: ["Android Native", "Java"],
+    slug: "digipos-outlet",
+    tags: ["Android Native", "Java", "Kotlin", "MVVM"],
+    link: "",
+    screenshots: [],
+  },
+  {
+    slug: "mytelkomsel",
+    ongoing: true,
+    tags: ["Android Native", "Kotlin"],
+    link: "",
+    screenshots: [],
+  },
+  {
+    slug: "digipos-dashboard",
+    tags: ["React", "TypeScript"],
+    link: "",
+    screenshots: [],
+  },
+  {
+    slug: "swarapoint",
+    tags: ["React Native", "TypeScript"],
+    link: "",
+    screenshots: [],
+  },
+  {
+    slug: "digipos-lite",
+    tags: ["Android Native", "Java", "Kotlin"],
+    link: "",
+    screenshots: [],
+  },
+  {
+    slug: "comm-apps-rekat",
+    tags: ["React Native", "TypeScript"],
+    link: "",
+    screenshots: [],
+  },
+  {
+    slug: "cb-umma",
+    tags: ["React Native", "TypeScript"],
     link: "",
     screenshots: [],
   },
