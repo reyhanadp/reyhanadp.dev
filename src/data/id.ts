@@ -10,7 +10,7 @@ const id: LocaleContent = {
   availability: "", // contoh: "Terbuka untuk peluang baru"
 
   about: [
-    "Software engineer dengan pengalaman lintas mobile development (React Native, Android Native) dan data engineering/observability (Elastic Stack, Grafana, Pentaho).",
+    "Frontend engineer dengan pengalaman membangun user interface lintas mobile (React Native, Android Native) dan web (React, Next.js), serta berlatar belakang data engineering/observability (Elastic Stack, Grafana, Pentaho).",
     "Elastic Certified Engineer dengan rekam jejak membangun dashboard end-to-end untuk klien enterprise seperti PT Bank Mandiri, serta mengembangkan dan memelihara portofolio aplikasi mobile & web — mulai dari tooling outlet/reseller Telkomsel hingga beberapa aplikasi komunitas/membership — untuk pengguna berskala nasional maupun komunitas.",
   ],
 

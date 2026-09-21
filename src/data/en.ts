@@ -10,7 +10,7 @@ const en: LocaleContent = {
   availability: "", // example: "Open to new opportunities"
 
   about: [
-    "Software engineer with experience across mobile development (React Native, native Android) and data engineering/observability (Elastic Stack, Grafana, Pentaho).",
+    "Frontend engineer with experience building user interfaces across mobile (React Native, native Android) and web (React, Next.js), plus a background in data engineering/observability (Elastic Stack, Grafana, Pentaho).",
     "Elastic Certified Engineer with a track record of building end-to-end dashboards for enterprise clients such as Bank Mandiri, and of developing and maintaining a portfolio of mobile and web apps — spanning Telkomsel's outlet/reseller tooling and several community/membership apps — for nationwide and community-scale user bases.",
   ],
 
