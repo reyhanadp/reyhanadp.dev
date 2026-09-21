@@ -23,69 +23,90 @@ const stats = [
   </div>
 
   <div class="mx-auto max-w-5xl px-6 pt-20 pb-16 sm:pt-28 sm:pb-20">
-    <div class="flex flex-wrap items-center gap-2">
-      <span
-        class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs font-medium text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
-      >
-        <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-          <circle cx="12" cy="10" r="3" />
-        </svg>
-        {profile.location}
-      </span>
-      {
-        availability && (
-          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-300">
-            <span class="size-1.5 rounded-full bg-emerald-500" />
-            {availability}
+    <div class="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
+      <div class="order-2 lg:order-1">
+        <div class="flex flex-wrap items-center gap-2">
+          <span
+            class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs font-medium text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
+          >
+            <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            {profile.location}
           </span>
-        )
-      }
-    </div>
+          {
+            availability && (
+              <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-300">
+                <span class="size-1.5 rounded-full bg-emerald-500" />
+                {availability}
+              </span>
+            )
+          }
+        </div>
 
-    <h1
-      class="mt-6 text-4xl font-extrabold tracking-tight text-balance text-slate-900 sm:text-6xl dark:text-white"
-    >
-      {profile.name}
-    </h1>
-    <p class="mt-3 text-lg font-semibold text-indigo-600 sm:text-xl dark:text-indigo-400">
-      {jobTitle}
-    </p>
-    <p class="mt-5 max-w-2xl text-lg leading-relaxed text-pretty">
-      {tagline}
-    </p>
+        <h1
+          class="mt-6 text-4xl font-extrabold tracking-tight text-balance text-slate-900 sm:text-6xl dark:text-white"
+        >
+          {profile.name}
+        </h1>
+        <p class="mt-3 text-lg font-semibold text-indigo-600 sm:text-xl dark:text-indigo-400">
+          {jobTitle}
+        </p>
+        <p class="mt-5 max-w-2xl text-lg leading-relaxed text-pretty">
+          {tagline}
+        </p>
 
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a
-        href="#projects"
-        class="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 active:scale-[0.98]"
-      >
-        {ui.hero.viewProjects}
-        <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M5 12h14M13 6l6 6-6 6" />
-        </svg>
-      </a>
-      <a
-        href="#contact"
-        class="inline-flex items-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition hover:border-slate-400 hover:bg-slate-50 active:scale-[0.98] dark:border-white/15 dark:bg-transparent dark:text-white dark:hover:border-white/30 dark:hover:bg-white/5"
-      >
-        {ui.hero.contactMe}
-      </a>
-    </div>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="#projects"
+            class="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 active:scale-[0.98]"
+          >
+            {ui.hero.viewProjects}
+            <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+          <a
+            href="#contact"
+            class="inline-flex items-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition hover:border-slate-400 hover:bg-slate-50 active:scale-[0.98] dark:border-white/15 dark:bg-transparent dark:text-white dark:hover:border-white/30 dark:hover:bg-white/5"
+          >
+            {ui.hero.contactMe}
+          </a>
+        </div>
 
-    <dl class="mt-14 grid max-w-2xl grid-cols-3 divide-x divide-slate-200 dark:divide-white/10">
-      {
-        stats.map((stat) => (
-          <div class="flex flex-col-reverse px-4 first:pl-0">
-            <dt class="mt-1 text-xs font-medium tracking-wide text-slate-500 uppercase dark:text-slate-400">
-              {stat.label}
-            </dt>
-            <dd class="text-2xl font-bold text-slate-900 sm:text-3xl dark:text-white">
-              {stat.value}
-            </dd>
+        <dl class="mt-14 grid max-w-2xl grid-cols-3 divide-x divide-slate-200 dark:divide-white/10">
+          {
+            stats.map((stat) => (
+              <div class="flex flex-col-reverse px-4 first:pl-0">
+                <dt class="mt-1 text-xs font-medium tracking-wide text-slate-500 uppercase dark:text-slate-400">
+                  {stat.label}
+                </dt>
+                <dd class="text-2xl font-bold text-slate-900 sm:text-3xl dark:text-white">
+                  {stat.value}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+
+      <div class="order-1 mx-auto lg:order-2 lg:mx-0">
+        <div class="relative size-40 sm:size-52 lg:size-64">
+          <div
+            aria-hidden="true"
+            class="absolute -inset-2 rounded-[2rem] bg-linear-to-br from-indigo-500 to-violet-500 opacity-20 blur-xl"
+          >
           </div>
-        ))
-      }
-    </dl>
+          <img
+            src="/profile/photo.jpg"
+            alt={profile.name}
+            width="256"
+            height="256"
+            class="relative size-full rounded-[1.75rem] border border-slate-200 object-cover shadow-lg dark:border-white/10"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </section>

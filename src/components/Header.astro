@@ -15,8 +15,6 @@ const navLinks = [
   { id: "education", href: `${home}#education`, label: ui.nav.education },
   { id: "contact", href: `${home}#contact`, label: ui.nav.contact },
 ];
-
-const initial = profile.name.charAt(0);
 ---
 
 <header
@@ -24,9 +22,13 @@ const initial = profile.name.charAt(0);
 >
   <nav class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-3">
     <a href={home} class="flex items-center gap-2.5 text-sm font-semibold text-slate-900 dark:text-white">
-      <span class="grid size-8 place-items-center rounded-lg bg-indigo-600 text-sm font-bold text-white">
-        {initial}
-      </span>
+      <img
+        src="/profile/photo.jpg"
+        alt=""
+        width="32"
+        height="32"
+        class="size-8 shrink-0 rounded-full object-cover ring-1 ring-slate-200 dark:ring-white/10"
+      />
       <span class="hidden sm:inline">{profile.name}</span>
     </a>
 
