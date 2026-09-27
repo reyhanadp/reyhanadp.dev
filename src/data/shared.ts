@@ -98,4 +98,10 @@ export const projectAssets: ProjectAssets[] = [
     link: "",
     screenshots: [],
   },
+  {
+    slug: "99-usahaku",
+    tags: ["React Native"],
+    link: "",
+    screenshots: [],
+  },
 ];

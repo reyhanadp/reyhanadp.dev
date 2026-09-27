@@ -244,6 +244,29 @@ const en: LocaleContent = {
       linkLabel: "View on Play Store",
     },
     {
+      slug: "99-usahaku",
+      title: "99% Usahaku",
+      client: "Telkomsel",
+      category: "Mobile App",
+      group: "software",
+      role: "Mobile Engineer",
+      period: "Jan 2022 — Dec 2023",
+      description:
+        "A mobile marketplace app for Telkomsel where users can buy and sell goods online, built with React Native for Android and iOS.",
+      details: [
+        "99% Usahaku is a mobile marketplace app that lets users buy and sell goods online, built with React Native for both Android and iOS.",
+        "I worked across the full mobile development lifecycle for the app — building and enhancing features, developing the APIs behind them, and keeping the app fast, secure, and reliable.",
+      ],
+      highlights: [
+        "Designed, built, and enhanced highly scalable features for both Android and iOS",
+        "Built user interfaces and experiences tailored for mobile devices",
+        "Developed APIs to support the app's mobile functionality",
+        "Resolved bugs and debugged issues to optimize performance",
+        "Reviewed other developers' code before it was merged",
+      ],
+      linkLabel: "",
+    },
+    {
       slug: "portal-karyawan-isgs",
       title: "IS-GS Employee Portal",
       client: "Internal — PT Indonesia Global Solusindo",

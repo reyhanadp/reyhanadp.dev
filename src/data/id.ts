@@ -244,6 +244,29 @@ const id: LocaleContent = {
       linkLabel: "Lihat di Play Store",
     },
     {
+      slug: "99-usahaku",
+      title: "99% Usahaku",
+      client: "Telkomsel",
+      category: "Mobile App",
+      group: "software",
+      role: "Mobile Engineer",
+      period: "Jan 2022 — Des 2023",
+      description:
+        "Aplikasi marketplace mobile milik Telkomsel tempat pengguna bisa jual-beli barang secara online, dibangun dengan React Native untuk Android dan iOS.",
+      details: [
+        "99% Usahaku adalah aplikasi marketplace mobile yang memungkinkan pengguna jual-beli barang secara online, dibangun dengan React Native untuk Android dan iOS.",
+        "Saya terlibat di seluruh siklus pengembangan mobile untuk aplikasi ini — membangun dan menyempurnakan fitur, mengembangkan API pendukungnya, serta menjaga aplikasi tetap cepat, aman, dan andal.",
+      ],
+      highlights: [
+        "Merancang, membangun, dan menyempurnakan fitur yang sangat scalable untuk Android dan iOS",
+        "Membangun user interface dan pengalaman pengguna yang disesuaikan untuk perangkat mobile",
+        "Mengembangkan API untuk mendukung fungsionalitas aplikasi mobile",
+        "Menyelesaikan bug dan melakukan debugging untuk mengoptimalkan performa",
+        "Melakukan code review terhadap kode developer lain sebelum di-merge",
+      ],
+      linkLabel: "",
+    },
+    {
       slug: "portal-karyawan-isgs",
       title: "Portal Karyawan IS-GS",
       client: "Internal — PT Indonesia Global Solusindo",
